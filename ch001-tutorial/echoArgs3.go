@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -17,6 +18,7 @@ func main() {
 			fmt.Println("println val", val)
 		}
 	*/
+	fmt.Println("\nstrings join:\t", strings.Join(os.Args[1:], " ")) // This is more efficent that using loop/cat as "s" will be garbage collected when contents of S no longer in use
 	for i, val := range os.Args[:] {
 		fmt.Printf("indx: %d w/ val: %s\n", i, val)
 	}

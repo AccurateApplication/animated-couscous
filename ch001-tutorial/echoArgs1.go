@@ -13,5 +13,5 @@ func main() {
 		sep = " "
 		fmt.Println(str)
 	}
-
+	// s := "" // this type of var may only be used inside a func, not pkg level var
 }
