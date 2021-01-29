@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	time.Sleep(5 * time.Second)
 	go helloGoodbye() // this prints
 	start := time.Now()
 	ch := make(chan string) // what is this
