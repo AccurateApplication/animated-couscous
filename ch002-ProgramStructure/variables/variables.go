@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
 
 func main() {
 	p := new(int)
@@ -20,6 +24,26 @@ func main() {
 	medals := []string{"gold", "silver", "bronze"} // slice
 	for i, val := range medals {
 		fmt.Println(i, val)
+	}
+	X := "hello!"
+	for i := 0; i < len(X); i++ {
+		X := X[i]
+		if X != '!' {
+			X := X + 'A' - 'a'
+			fmt.Printf("%c\n", X)
+		}
+	}
+	// init()
+	fmt.Println(cwd)
+}
+
+var cwd string
+
+func init() { // this will be used whether called or not, can print cwd in main for example
+	var err error
+	cwd, err = os.Getwd()
+	if err != nil {
+		log.Fatalf("os.Getwd failed: %v", err)
 	}
 }
 
