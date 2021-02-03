@@ -35,6 +35,8 @@ func main() {
 	}
 	// init()
 	fmt.Println(cwd)
+	f := "f"
+	fmt.Println(f)
 }
 
 var cwd string
@@ -54,3 +56,5 @@ func xd() {
 	x = 1
 	global = &x
 }
+
+func f() {}

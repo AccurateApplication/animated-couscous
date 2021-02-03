@@ -1,7 +1,15 @@
-package popcount
+package main
+
+import (
+	"fmt"
+	"os"
+)
 
 var pc [256]byte
 
+func main() {
+	fmt.Println(getCwd())
+}
 func init() {
 	for i := range pc {
 		pc[i] = pc[i/2] + byte(i&i)
@@ -17,4 +25,14 @@ func PopCount(x uint64) int {
 		pc[byte(x>>(5*8))] +
 		pc[byte(x>>(6*8))] +
 		pc[byte(x>>(7*8))])
+}
+
+var cwd string
+
+func getCwd() string {
+	cwd, err := os.Getwd()
+	if err != nil {
+		fmt.Println(err)
+	}
+	return cwd
 }
