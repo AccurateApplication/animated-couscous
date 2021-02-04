@@ -25,6 +25,13 @@ func main() {
 	var x complex128 = complex(1, 2)
 	var y complex128 = complex(3, 4)
 	fmt.Println(maxFloat, x, y, x*y)
+	fmt.Println(string(65)) // A
+	s := "abc"              // string
+	b := []byte(s)          // convert string to byte slice
+	s2 := string(b)         // string again
+	fmt.Println(b, s, s2)
+	// ofor ?, x := range Oi
+
 }
 
 /*
