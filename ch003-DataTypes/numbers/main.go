@@ -5,7 +5,29 @@ import (
 	"math"
 )
 
+// constants is something that wont change. Useful for example math stuff
+type Weekday int
+
+const (
+	Sunday Weekday = iota // this declares sunday to be 0, monday 1, and so on
+	Monday
+	Tuesday
+	Wednesday
+	Thursday
+	Friday
+	Saturday
+	a = 1
+	b
+	c = 2
+	d
+	Pi = 3.14159265358979323846264338327950288419716939937510582097494459
+)
+
 func main() {
+	fmt.Println(Sunday, Monday, "<- su mon")
+	fmt.Println(a, b, c, d, "<- a,b,c,d") // 1,1,2,2
+	fmt.Println(Pi)
+
 	var i int8 = 127
 	fmt.Println(i, i*1, i*i)
 	var u uint8 = 255
@@ -29,8 +51,23 @@ func main() {
 	s := "abc"              // string
 	b := []byte(s)          // convert string to byte slice
 	s2 := string(b)         // string again
-	fmt.Println(b, s, s2)
-	// ofor ?, x := range Oi
+	fmt.Println(b, s, s2, "\n\n\n")
+	fmt.Println(Waa())
+	hej := Waa()
+	fmt.Println(hej)
+
+}
+
+const (
+	_ = 1 << (10 * iota) // powers of 1024
+	KiB
+	MiB
+)
+
+func Waa() int {
+	fmt.Println(KiB, MiB)
+	hej := (KiB + MiB)
+	return hej
 
 }
 
