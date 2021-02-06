@@ -55,6 +55,10 @@ func main() {
 	fmt.Println(Waa())
 	hej := Waa()
 	fmt.Println(hej)
+	//
+	//
+	//
+	//
 
 }
 
