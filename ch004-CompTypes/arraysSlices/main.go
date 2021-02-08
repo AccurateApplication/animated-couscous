@@ -22,10 +22,18 @@ func main() {
 	cr2 := sha256.Sum256([]byte("Y"))
 	// fmt.Println(len(cr1), cr1)
 	fmt.Printf("len: %d\nbase16 X: %x\nbase16 Y: %x\n", len(cr1), cr1, cr2) // %x = base16
+	revSlice(c)
+	fmt.Println("reveresed slice?:", c)
 }
 
 func zero(ptr [32]byte) {
 	for i := range ptr {
 		ptr[i] = 0
+	}
+}
+
+func revSlice(s []int) {
+	for i, x := 0, len(s)-1; i < x; i, x = i+1, x-1 {
+		s[i], s[x] = s[x], s[i]
 	}
 }
