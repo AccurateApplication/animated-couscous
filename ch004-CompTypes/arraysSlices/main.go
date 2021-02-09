@@ -22,8 +22,17 @@ func main() {
 	cr2 := sha256.Sum256([]byte("Y"))
 	// fmt.Println(len(cr1), cr1)
 	fmt.Printf("len: %d\nbase16 X: %x\nbase16 Y: %x\n", len(cr1), cr1, cr2) // %x = base16
+	//////
 	revSlice(c)
-	fmt.Println("reveresed slice?:", c)
+	fmt.Printf("capacity C: %v\t reveresed slice: %v\n", cap(c), c)
+	var x, y []int
+	for i := 0; i < 10; i++ {
+		y = appendInts(x, i)
+		fmt.Printf("i: %d\tcap y=%d\ty:%v\n", i, cap(y), y)
+		x = y
+
+	}
+
 }
 
 func zero(ptr [32]byte) {
@@ -36,4 +45,23 @@ func revSlice(s []int) {
 	for i, x := 0, len(s)-1; i < x; i, x = i+1, x-1 {
 		s[i], s[x] = s[x], s[i]
 	}
+}
+
+func appendInts(x []int, y int) []int {
+	var z []int
+	zlen := len(x) + 1
+	if zlen <= cap(x) { // if capacity of X more than len X, can grow/extend
+		z = x[:zlen]
+	} else { // we dont have room to extend
+		zcap := zlen
+		if zcap < 2*len(x) {
+			// Grows by doubling
+			zcap = 2 * len(x)
+		}
+		z = make([]int, zlen, zcap) //
+		// fmt.Printf("zlen:%v \tzcap:%v\n", zlen, zcap)
+		copy(z, x) // Copies elements from Z to X.
+	}
+	z[len(x)] = y //
+	return z
 }
