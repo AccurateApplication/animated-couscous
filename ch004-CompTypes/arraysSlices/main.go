@@ -30,8 +30,15 @@ func main() {
 		y = appendInts(x, i)
 		fmt.Printf("i: %d\tcap y=%d\ty:%v\n", i, cap(y), y)
 		x = y
-
 	}
+	// testSlice := make([]int, 5, 50) //  slice with 5 elements and cap of 50
+	// fmt.Printf("testslice: %v\t cap: %v\t len: %v", testSlice, cap(testSlice), len(testSlice))
+
+	const smpl = "\xbd\xb2\x3d\xbc\x20\xe2\x8c\x98"
+	for i := 0; i < len(smpl); i++ {
+		fmt.Printf("%x ", smpl[i])
+	}
+	fmt.Printf(" \n%x ", smpl)
 
 }
 
@@ -54,11 +61,12 @@ func appendInts(x []int, y int) []int {
 		z = x[:zlen]
 	} else { // we dont have room to extend
 		zcap := zlen
-		if zcap < 2*len(x) {
+		if zcap < 2*len(x) { // if capacity of Z is less than 2*len X then double
 			// Grows by doubling
 			zcap = 2 * len(x)
 		}
 		z = make([]int, zlen, zcap) //
+		fmt.Println("zlen/zcap:", zlen, zcap)
 		// fmt.Printf("zlen:%v \tzcap:%v\n", zlen, zcap)
 		copy(z, x) // Copies elements from Z to X.
 	}
