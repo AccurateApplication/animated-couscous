@@ -27,7 +27,7 @@ func main() {
 	fmt.Printf("capacity C: %v\t reveresed slice: %v\n", cap(c), c)
 	var x, y []int
 	for i := 0; i < 10; i++ {
-		y = appendInts(x, i)
+		y = appendInt(x, i)
 		fmt.Printf("i: %d\tcap y=%d\ty:%v\n", i, cap(y), y)
 		x = y
 	}
@@ -39,7 +39,6 @@ func main() {
 		fmt.Printf("%x ", smpl[i])
 	}
 	fmt.Printf(" \n%x ", smpl)
-
 }
 
 func zero(ptr [32]byte) {
@@ -54,7 +53,7 @@ func revSlice(s []int) {
 	}
 }
 
-func appendInts(x []int, y int) []int {
+func appendInt(x []int, y int) []int {
 	var z []int
 	zlen := len(x) + 1
 	if zlen <= cap(x) { // if capacity of X more than len X, can grow/extend
@@ -73,3 +72,5 @@ func appendInts(x []int, y int) []int {
 	z[len(x)] = y //
 	return z
 }
+
+//func appendInt2(x []int, y ...int) []int { // ... (ellipsis) makes function "variadic", meaning it accepts any number of final arg's
