@@ -27,7 +27,7 @@ func main() {
 
 }
 
-// makes unnecessary copy of array to slice
+// makes unnecessary copy of array to slice (var temp)
 func revArray(ptrArr *[5]int) {
 	var temp []int
 	fmt.Println(temp)
