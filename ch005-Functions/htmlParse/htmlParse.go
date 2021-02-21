@@ -1,4 +1,4 @@
-package main
+package htmlParse
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-func main() {
+func htmlParse() {
 	doc, err := html.Parse(os.Stdin)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "parse fail: %v\n", err)
