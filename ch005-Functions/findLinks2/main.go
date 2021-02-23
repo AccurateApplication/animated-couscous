@@ -1,7 +1,6 @@
 package main
 
 import (
-	"animated-couscous/ch005-Functions/htmlParse"
 	"fmt"
 	"net/http"
 	"os"
@@ -9,8 +8,7 @@ import (
 
 func main() {
 	for _, url := range os.Args[1:] {
-		links, err := htmlParse.htmlParse(url)
-
+		links, err := findLinks(url)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "find links err: %v\n", err)
 			continue
