@@ -22,7 +22,7 @@ func main() {
 }
 
 //
-func findLink(url string) ([]string, error) { // Multiple return values
+func findLinks(url string) ([]string, error) { // Multiple return values
 	resp, err := http.Get(url) // os args in main
 	if err != nil {
 		return nil, err
