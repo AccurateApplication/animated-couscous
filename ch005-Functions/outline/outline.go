@@ -1,6 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	//"html"
+	"golang.org/x/net/html" // import seems broken?
+)
+
+var depth int
+
+func main() {
+	fmt.Printl("h")
+}
 
 func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	if pre != nil {
