@@ -18,6 +18,16 @@ func main() {
 		{5, 5},
 	}
 	fmt.Println(perim.Dist())
+	// Methods with pointers
+	// Using ScaleBy Func
+	x := &Point{1, 2}      //pointer to Point ?
+	x.ScaleBy(5)           // use func
+	fmt.Println("*x:", *x) // Point=5,10
+
+	x1 := Point{5, 10}
+	x1.ScaleBy(5)          // this also works. compiler adds & before var x. This doesnt work directly on Point, as we cant get address of it
+	fmt.Println("x1:", x1) // Point=25,50
+	// Point{5, 70}.ScaleBy(5) = err: cannot call pointer method on point literal
 }
 
 type Point struct{ X, Y float64 }
@@ -42,4 +52,12 @@ func (path Path) Dist() float64 {
 		}
 	}
 	return sum
+}
+
+// Calling functions makes copy of each arg value, if needs to update variable/variable too large to copy, use pointer
+
+// Method called '  (*Point).ScaleBy.   '
+func (p *Point) ScaleBy(factor float64) {
+	p.X *= factor
+	p.Y *= factor
 }
