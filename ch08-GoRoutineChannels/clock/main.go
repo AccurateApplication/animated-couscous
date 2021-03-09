@@ -16,8 +16,6 @@ func main() {
 	}
 
 	for { // while
-		fmt.Println("start of while")
-		netCat()
 		conn, err := listen.Accept() // conn = accept LH:8000
 		if err != nil {
 			log.Print(err) // conn failed/aborted
@@ -25,7 +23,6 @@ func main() {
 
 		}
 		go handleConn(conn) // one at a time
-		go netCat()
 	}
 
 }
@@ -33,7 +30,7 @@ func main() {
 func handleConn(c net.Conn) {
 	defer c.Close()
 	for {
-		_, err := io.WriteString(c, time.Now().Format("15:04:05\n")) // why the "_"
+		_, err := io.WriteString(c, time.Now().Format("15:04:05\n"))
 		if err != nil {
 			return
 		}
@@ -42,9 +39,7 @@ func handleConn(c net.Conn) {
 	}
 }
 
-// This seems to print when i runt NC on localhost..
 func netCat() {
-	fmt.Println("netcat")
 	con, err := net.Dial("tcp", "localhost:8000")
 	if err != nil {
 		log.Fatal(err)
