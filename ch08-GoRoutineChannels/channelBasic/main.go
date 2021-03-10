@@ -19,6 +19,23 @@ close(ch) | close channel
 */
 
 func main() {
+	// buffered channel
+	ch := make(chan int, 2)
+	ch <- 1
+	ch <- 2
+	fmt.Println(<-ch) // 1
+	fmt.Println(<-ch) // 2
+	//fmt.Println(<-ch) // can only print twice
+	ch <- 3 //
+	//ch <- 10 // crash
+	fmt.Println(<-ch) // 3
+	time.Sleep(1 * time.Second)
+
+	// unbuffered chan
+	//ch1 := make(chan int, 0)
+	//ch1 <- 1 // chan send, goroutines are asleep deadlock
+	//fmt.Println(<-ch1)
+
 	sendChannels2("hello123")
 	fmt.Println("msg in main", msg)
 	sendChannels("bird is the word")
