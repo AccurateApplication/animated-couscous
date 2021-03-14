@@ -3,11 +3,12 @@ package main
 import "fmt"
 
 func main() {
+
 	naturals := make(chan int)
 	squares := make(chan int)
 
 	go func() {
-		for x := 0; ; x++ { // loop without condition..?! counts up with x
+		for x := 0; ; x++ {
 			naturals <- x
 		}
 	}()
